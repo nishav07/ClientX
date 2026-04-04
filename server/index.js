@@ -8,12 +8,16 @@ import { urlencoded } from "express";
 const app = express();
 const port = 8080;
 
+import router from './routes/routers.js';
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
+
+
+app.use("/",router);
+
+test();
 
 app.listen(port,() => {
     console.log(`app is working at this port ${port}`);
 })
-
-
-test();

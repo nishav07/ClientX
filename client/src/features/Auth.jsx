@@ -9,22 +9,18 @@ export default function Auth(){
 
     return(
         <>
-          <Routes>
-        <Route path='/login' element={<Login/>}  />
-        <Route path='/signup' element={<Signup/>} />
-    </Routes>
-
-
-
         <nav>
             <h2>AUTH PAGE</h2>
-            <Link to={"/login"}><Btn text="login" color="white" bg="black"></Btn></Link>
-            <Link to={"/signup"}><Btn text="signup" color="black" bg="white"></Btn></Link>
+            <Link to={"/auth/login"}><Btn text="login" color="white" bg="black"></Btn></Link>
+            <Link to={"/auth/signup"}><Btn text="signup" color="black" bg="white"></Btn></Link>
             
         </nav>
        
-    <div>
-        <Outlet/>
+    <div className='authContent'>
+        <Routes>
+        <Route path='login' element={<Login/>}  />-
+        <Route path='signup' element={<Signup/>} />
+    </Routes>
     </div>
 
         </>
