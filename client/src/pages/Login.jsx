@@ -1,31 +1,53 @@
-import { useState } from "react"
+// import { useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from 'axios';
 
 
 export default function Login(){
-    let [form,setForm] = useState({
-        userName:"",password:""
-    })
+      const { register, handleSubmit } = useForm();
 
-    let inputHandler = (e) => {
-        let currName = e.target.name;
-        let currVal = e.target.value;
+    const onSubmit = (data) => {
+    console.log(data);
 
-        setForm((currData) => {
-            currData[currName] = currVal;
-            return {...currData};
-        })
-
+    try {
+        let res = axios.post("http://localhost:8080/login",data);
+        console.log("response  ",res)
+    } catch (error) {
+        console.log(error);
     }
+
+   
+    // fetch("http://localhost:8080/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+  };
+
+    // let [form,setForm] = useState({
+    //     userName:"",password:""
+    // })
+
+    // let inputHandler = (e) => {
+    //     let currName = e.target.name;
+    //     let currVal = e.target.value;
+
+    //     setForm((currData) => {
+    //         currData[currName] = currVal;
+    //         return {...currData};
+    //     })
+
+    // }
 
      return(<>
     <h1>Login box</h1>
 
-    <form action="http://localhost:8080/login" method="POST">
-        <input type="text" name="userName" placeholder="enter your userName" onChange={inputHandler} />
-        <input type="password" name="password" placeholder="enter your password" onChange={inputHandler}/>
+    <form onSubmit={handleSubmit(onSubmit)}>
+        <input type="text" placeholder="enter your userName" {...register("userName")} />
+        <input type="password"  placeholder="enter your password" {...register("password")} />
         <button>Submit</button>
     </form>
-
-    <p>userName:{form.userName} password:{form.password}</p>
     </>)
 }
