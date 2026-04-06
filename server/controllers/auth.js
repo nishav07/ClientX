@@ -1,6 +1,8 @@
 async function signup(req,res){
-    let {username,email,password} = req.body;
-    console.log("signup data from server",username,email,pass);
+    let {userName,email,password} = req.body;
+    console.log("signup data from server",userName,email,password);
+
+    res.json({ message: "signup ho gya" })
 }
 
 
@@ -8,7 +10,7 @@ function login(req,res){
     const {userName,password} = req.body;
     console.log("backend ka data",userName,password);
 
-    res.status(200);
+    res.json({ message: "Login success" })
     
 }
 

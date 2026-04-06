@@ -1,12 +1,22 @@
 import express from 'express';
 import "dotenv/config";
-// import 'cors' from cors
+import cors from "cors";
+
+
+
+
 
 import { pool, test } from "./config/sql.js";
 import { urlencoded } from "express";
 
 const app = express();
 const port = 8080;
+
+
+app.use(cors({
+  origin: "http://localhost:5173"
+}));
+
 
 import router from './routes/routers.js';
 
