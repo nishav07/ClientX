@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 
 
-export default function Login(){
+export default function Login({setUser}){
       const { register, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
@@ -11,7 +11,8 @@ export default function Login(){
 
     try {
         let res = axios.post("http://localhost:8080/login",data);
-        console.log("response  ",res)
+        console.log("response  ",res);
+        
     } catch (error) {
         console.log(error);
     }

@@ -1,11 +1,11 @@
 import {Route,Routes} from 'react-router-dom';   
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
+import Login from '../pages/Auth/Login';
+import Signup from '../pages/Auth/Signup';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Btn from '../components/btn';
 
-export default function Auth(){
+export default function Auth({setUser}){
 
     return(
         <>
@@ -18,7 +18,7 @@ export default function Auth(){
        
     <div className='authContent'>
         <Routes>
-        <Route path='login' element={<Login/>}  />-
+        <Route path='login' element={<Login setUser={setUser}/>}  />-
         <Route path='signup' element={<Signup/>} />
     </Routes>
     </div>
