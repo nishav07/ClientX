@@ -7,10 +7,11 @@ async function signup(req,res){
     let hashedPass = await hash(password);
     console.log(hashedPass);
     try {
-        // const [rows] = await pool.query("INSERT INTO users (userName,email,passowrd) VALUES(?,?,?)",[userName,email,hashedPass]);
+        const [rows] = await pool.query("INSERT INTO users (userName,email,password) VALUES(?,?,?)",[userName,email,hashedPass]);
          res.json({ message: "succesfully signedUp", success:true })
     } catch (error) {
-        res.json({ message: "signup failed" ,success:false})
+        res.json({ message: "signup failed" ,success:false});
+        console.log(error);
     }
    
 }
@@ -20,7 +21,7 @@ function login(req,res){
     const {userName,password} = req.body;
     console.log("backend ka data",userName,password);
 
-    res.json({ message: "Login success" })
+    res.json({ message: "Login success",success:true })
     
 }
 
