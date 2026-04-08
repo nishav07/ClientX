@@ -1,17 +1,31 @@
 // import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login({setUser}){
+     const navigate = useNavigate();
       const { register, handleSubmit } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
     console.log(data);
 
     try {
-        let res = axios.post("http://localhost:8080/login",data);
+        let res = await axios.post("http://localhost:8080/login",data);
         console.log("response  ",res);
+        console.log(res.data)
+
+        let {userName,email,userId} = res.data.userData;
+
+        console.log({userName,email,userId})
+
+         if(res.data.success == true){
+            setUser({userName:userName,email:email,userId:userId});
+            navigate("/dashboard");
+        } else {
+            navigate("/")
+        }
         
     } catch (error) {
         console.log(error);

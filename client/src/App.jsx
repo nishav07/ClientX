@@ -2,7 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import Landing from './pages/Landing'
 import Auth from './features/Auth';
-import {Route,Routes} from 'react-router-dom';  
+import {Navigate, Route,Routes} from 'react-router-dom';
+import Layout from './pages/Dashboard/Layout';  
 
 function App() {
   
@@ -14,6 +15,8 @@ function App() {
     <Route path='/' element={<Landing/>} />
     {/* //auth ke baad /* lagane se iske aage ka route uske control mami jaat hai */}
     <Route path='/auth/*' element={<Auth setUser={setUser}/>} /> 
+    <Route path='/dashboard' element={user ? <Layout userData={user}/> : <Navigate to="/"/>}/>
+
   </Routes>
     </>
   )

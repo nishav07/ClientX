@@ -1,5 +1,6 @@
 import {pool} from "../config/sql.js";
 import { hash } from "../middlewares/hashing.js";
+import { verification } from "../middlewares/hashing.js";
 
 async function signup(req,res){
     let {userName,email,password} = req.body;
@@ -17,9 +18,33 @@ async function signup(req,res){
 }
 
 
-function login(req,res){
+async function login(req,res){
     const {userName,password} = req.body;
     console.log("backend ka data",userName,password);
+
+    try {
+        const [rows] = await pool.query("SELECT * FROM users WHERE userName = ?",userName);
+
+        if(rows.length === 0){
+            return res.json({ message: "User not found" ,success:false});
+        }
+
+        const hashPass = rows[0].password;
+        console.log("passsword",hashPass);
+
+        const isPassCorrect = await verification(password,hashPass);
+
+        if(isPassCorrect){
+            return res.json({ message: "signup hogyaaa" ,success:true,userData:rows[0]});
+        } else {
+            return res.json({ message: "password galat haiiii" ,success:false});
+        }
+
+    } catch (error) {
+         res.json({ message: "loggedIn failed" ,success:false});
+        console.log("login wala err from db",error)
+    }
+
 
     res.json({ message: "Login success",success:true })
     
