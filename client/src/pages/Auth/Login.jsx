@@ -18,17 +18,19 @@ export default function Login({setUser}){
 
         let {userName,email,userId} = res.data.userData;
 
-        console.log({userName,email,userId})
+        console.log("data login mai jo save ho rha",{userName,email,userId})
 
          if(res.data.success == true){
             setUser({userName:userName,email:email,userId:userId});
+            console.log("token save krte time",res.data.token)
+            localStorage.setItem("token",res.data.token)
             navigate("/dashboard");
         } else {
             navigate("/")
         }
         
     } catch (error) {
-        console.log(error);
+        console.log("loginn jsx waal er",error);
     }
 
    

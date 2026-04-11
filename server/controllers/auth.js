@@ -1,6 +1,7 @@
 import {pool} from "../config/sql.js";
 import { hash } from "../middlewares/hashing.js";
 import { verification } from "../middlewares/hashing.js";
+import jwt from 'jsonwebtoken';
 
 async function signup(req,res){
     let {userName,email,password} = req.body;
@@ -35,9 +36,19 @@ async function login(req,res){
         const isPassCorrect = await verification(password,hashPass);
 
         if(isPassCorrect){
-            return res.json({ message: "signup hogyaaa" ,success:true,userData:rows[0]});
+              const token = jwt.sign(
+                            {
+                                userId: rows[0].userId,
+                                email: rows[0].email,
+                                userName: rows[0].userName
+                            },
+                                process.env.JWT_SECRET,
+                               { expiresIn: '7d' }  
+                            )
+
+            return res.json({ message: "login ho gya" ,success:true,userData:rows[0],token:token});
         } else {
-            return res.json({ message: "password galat haiiii" ,success:false});
+            return res.status(400).json({ message: "password galat haiiii" ,success:false});
         }
 
     } catch (error) {
