@@ -2,9 +2,11 @@
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../features/AuthContext";
+const { setUser } = useAuth();
 
 
-export default function Login({setUser}){
+export default function Login({}){
      const navigate = useNavigate();
       const { register, handleSubmit } = useForm();
 
