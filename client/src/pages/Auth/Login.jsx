@@ -3,10 +3,11 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../features/AuthContext";
-const { setUser } = useAuth();
 
 
-export default function Login({}){
+
+export default function Login(){
+    const { setUser } = useAuth();
      const navigate = useNavigate();
       const { register, handleSubmit } = useForm();
 
@@ -61,7 +62,7 @@ export default function Login({}){
     // }
 
      return(<>
-    <h1>Login box</h1>
+    <h1 className="text-5xl font-bold text-blue-500">Login box</h1>
 
     <form onSubmit={handleSubmit(onSubmit)}>
         <input type="text" placeholder="enter your userName" {...register("userName")} />
