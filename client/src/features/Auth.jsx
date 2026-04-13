@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
-export default function Auth({setUser}){
+export default function Auth(){
 
     return(
         <>
@@ -17,13 +17,13 @@ export default function Auth({setUser}){
         </nav> */}
 
         <Navbar li1="home" btnTxt="back" btnPath="/"></Navbar>
-         <Link to={"/auth/login"}><button className='' >Login</button></Link>
-            <Link to={"/auth/signup"}><button >Signup</button></Link>
+         <Link to={"/auth/login"}><button className='h-12 w-auto p-2 bg-white text-black rounded-lg' >Login</button></Link>
+            <Link to={"/auth/signup"}><button className='h-12 w-auto p-2 bg-black text-white rounded-lg' >Signup</button></Link>
         
        
     <div className='authContent'>
         <Routes>
-        <Route path='login' element={<Login setUser={setUser}/>}  />-
+        <Route path='login' element={<Login/>}  />-
         <Route path='signup' element={<Signup/>} />
     </Routes>
     </div>

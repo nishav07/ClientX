@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../../components/Navbar";
 
-export default function Layout({userData}){
+export default function Layout(){
     let navigate = useNavigate();
     const [user,setUser] = useState(null);
 
@@ -48,7 +49,9 @@ useEffect(() => {
     return (<>
     <h1>User Dashboard</h1>
      {user ? (
-  <p>email:{user.email}</p>
+  <div id="container" className="h-full w-full">
+    <Navbar li1="home" li2="analytics" btnTxt="logout"  btnPath="/"/>
+  </div>
 ) : (
   <p>Loading...</p>
 )}
