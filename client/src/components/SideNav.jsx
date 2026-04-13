@@ -1,7 +1,7 @@
 export default function SideNav(){
     return(<div
      id="sideNavContainer"
-     className="h-full width-20 rounded-lg bg-black"
+     className="h-screen w-60 bg-black border-r-2 border-gray-400"
     >
 
 

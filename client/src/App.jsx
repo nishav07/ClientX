@@ -3,7 +3,7 @@ import './App.css';
 import Landing from './pages/Landing'
 import Auth from './features/Auth';
 import {Navigate, Route,Routes} from 'react-router-dom';
-import Layout from './pages/Dashboard/Layout'; 
+import Layout from './features/Layout.jsx'; 
 import PrivateRoute from "./features/PrivateRoute.jsx" 
 import { AuthProvider } from './features/AuthContext.jsx';
 
