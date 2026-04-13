@@ -20,7 +20,7 @@ function App() {
     <Route path='/auth/*' element={<Auth/>} /> 
     {/* <Route path='/dashboard' element={user ? <Layout userData={user}/> : <Navigate to="/"/>}/> */}
       <Route
-          path="/dashboard"
+          path="/dashboard/*"
           element={
             <PrivateRoute>
               <Layout/>
