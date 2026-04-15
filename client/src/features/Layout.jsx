@@ -12,23 +12,8 @@ export default function Layout(){
     let navigate = useNavigate();
     const [user,setUser] = useState(null);
 
-//    useEffect(() => {
-//   const fetchUser = async () => {
-//     try {
-//       const { data } = await api.get('/dashboard');
-//       console.log("dashboard response:", data)
-//       setUser(data.data)
-//     } catch(err) {
-// console.log("ERROR:", err.response?.status, err.response?.data)
-//       navigate('/login')
-//     }
-//   }
-
-//   fetchUser()
-// }, [])
-
-
 useEffect(() => {
+  
   const fetchUser = async () => {
     try {
       const token = localStorage.getItem('token');

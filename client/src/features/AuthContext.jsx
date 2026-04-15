@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
         const { data } = await api.get("/dashboard");
         setUser(data.data);
       } catch (err) {
-        console.log("auth context se aata hua ",err);
+        console.log("auth context se err aata hua ",err);
         setUser(null);
       } finally {
         setLoading(false);
