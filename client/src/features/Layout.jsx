@@ -8,6 +8,7 @@ import SideNav from "../components/SideNav";
 import {Route,Routes,Link} from 'react-router-dom'; 
 import Dashboard from "../pages/Dashboard/Dashboard";
 
+
 export default function Layout(){
     let navigate = useNavigate();
     const [user,setUser] = useState(null);
