@@ -12,7 +12,7 @@ export default function Navbar({li1,li2,li3,btnTxt,btnPath}) {
                 <a href=""><li className="text-xl text-white font-mono">{li3}</li></a>
 
               
-                    <Link to={btnPath}><button className="h-12 w-auto p-2 bg-white text-black rounded-lg">{btnTxt}</button></Link>
+                    <Link to={btnPath}><button className="h-12 w-auto  bg-white text-black rounded-lg">{btnTxt}</button></Link>
             </ul>
         </nav>
     </div>

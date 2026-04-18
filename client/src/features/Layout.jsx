@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import SideNav from "../components/SideNav";
 import {Route,Routes,Link} from 'react-router-dom'; 
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Customers from "../pages/Dashboard/Customers";
+import Leads from "../pages/Dashboard/Leads";
 
 
 export default function Layout(){
@@ -41,11 +43,13 @@ useEffect(() => {
   <div id="container" className="h-screen flex">
     <SideNav/>
     <div id="main" className="flex flex-col flex-1 bg-gray-200">
-      <Navbar li1="home" li2="analytics" btnTxt="Home"  btnPath="/dashboard/home"/>
+      <Navbar li1="home" li2="analytics"/>
 
       <main id="dyanamicContent" className="flex-1 overflow-auto-scroll bg-gray-100 p-4">
         <Routes>
-                <Route path='home' element={<Dashboard/>}  />-
+                <Route path='home' element={<Dashboard/>}  />
+                <Route path='customers' element={<Customers/>} />
+                <Route path="leads" element={<Leads/>}/>
 
             </Routes>
       </main>
