@@ -8,7 +8,7 @@ export default function SideNav(){
     >
 
         <div id="Nav"
-        className="p-2 bg-gray-300 flex flex-col gap-2"
+        className="p-2 mt-16  flex flex-col gap-2"
         >
 
             <Link to="/dashboard/home"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">home</button></Link>

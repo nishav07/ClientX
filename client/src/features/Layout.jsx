@@ -9,6 +9,8 @@ import {Route,Routes,Link} from 'react-router-dom';
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Customers from "../pages/Dashboard/Customers";
 import Leads from "../pages/Dashboard/Leads";
+import { Navigate } from "react-router-dom";
+import AddLeads from "../pages/Dashboard/AddLeads";
 
 
 export default function Layout(){
@@ -43,14 +45,15 @@ useEffect(() => {
   <div id="container" className="h-screen flex">
     <SideNav/>
     <div id="main" className="flex flex-col flex-1 bg-gray-200">
-      <Navbar li1="home" li2="analytics"/>
+      <Navbar btnTxt="Add Leads" btnPath="/dashboard/add"/>
 
       <main id="dyanamicContent" className="flex-1 overflow-auto-scroll bg-gray-100 p-4">
         <Routes>
-                <Route path='home' element={<Dashboard/>}  />
+            <Route path="/" element={<Navigate to="home" />} /> 
+                <Route index path='home' element={<Dashboard/>}  />
                 <Route path='customers' element={<Customers/>} />
                 <Route path="leads" element={<Leads/>}/>
-
+                 <Route path="add" element={<AddLeads/>}/>
             </Routes>
       </main>
     </div>

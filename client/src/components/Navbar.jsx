@@ -7,12 +7,12 @@ export default function Navbar({li1,li2,li3,btnTxt,btnPath}) {
             <div id="logo" className="text-3xl font-medium text-white"><h1>LOGO</h1></div>
 
             <ul id="menu" className="h-full w-auto flex items-center justify-center gap-3">
-                <a href="/"><li className="text-xl text-white font-mono">{li1}</li></a>
-                <a href=""><li className="text-xl text-white font-mono">{li2}</li></a>
-                <a href=""><li className="text-xl text-white font-mono">{li3}</li></a>
+                <Link to="/" ><li className="text-xl text-white font-mono">{li1}</li></Link>
+                <Link to="/"><li className="text-xl text-white font-mono">{li2}</li></Link>
+                <Link to="/"><li className="text-xl text-white font-mono">{li3}</li></Link>
 
               
-                    <Link to={btnPath}><button className="h-12 w-auto  bg-white text-black rounded-lg">{btnTxt}</button></Link>
+                    <Link to={btnPath}><button className="h-12 w-auto p-2  bg-white text-black rounded-lg">{btnTxt}</button></Link>
             </ul>
         </nav>
     </div>
