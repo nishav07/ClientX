@@ -47,7 +47,7 @@ useEffect(() => {
     <div id="main" className="flex flex-col flex-1 bg-gray-200">
       <Navbar btnTxt="Add Leads" btnPath="/dashboard/add"/>
 
-      <main id="dyanamicContent" className="flex-1 overflow-auto-scroll bg-gray-100 p-4">
+      <main id="dyanamicContent" className="flex-1 overflow-auto-scroll bg-mist-200 p-4">
         <Routes>
             <Route path="/" element={<Navigate to="home" />} /> 
                 <Route index path='home' element={<Dashboard/>}  />
