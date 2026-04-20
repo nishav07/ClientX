@@ -56,6 +56,10 @@ body {
   margin: 0;
 }
 
+*{
+  outline: none;
+}
+
 #root {
   width: 1126px;
   max-width: 100%;
