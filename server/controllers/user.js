@@ -13,5 +13,5 @@ export function dashboard(req,res){
 export function addLeads(req,res){
     let data = req.body;
     console.log("add leads data from backend",data);
-     return res.json({msg:"ok"});
+    return res.json({msg:"ok"});
 }

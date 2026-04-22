@@ -21,13 +21,16 @@ useEffect(() => {
   
   const fetchUser = async () => {
     try {
-      const token = localStorage.getItem('token');
-      console.log("token fetch krne se pehle",token)
-      const { data } = await axios.get('http://localhost:8080/dashboard', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
+      // const token = localStorage.getItem('token');
+      // console.log("token fetch krne se pehle",token)
+      // const { data } = await axios.get('http://localhost:8080/dashboard', {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`
+      //   }
+      // })
+
+      const { data } = await api.get('/dashboard');
+      
       console.log("dashboard response:", data)
       setUser(data.data)
     } catch(err) {
