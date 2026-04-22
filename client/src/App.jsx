@@ -6,6 +6,7 @@ import {Navigate, Route,Routes} from 'react-router-dom';
 import Layout from './features/Layout.jsx'; 
 import PrivateRoute from "./features/PrivateRoute.jsx" 
 import { AuthProvider } from './features/AuthContext.jsx';
+import { LeadProvider } from './features/leadContext.jsx';
 
 function App() {
   
@@ -23,7 +24,9 @@ function App() {
           path="/dashboard/*"
           element={
             <PrivateRoute>
+              <LeadProvider>
               <Layout/>
+              </LeadProvider>
             </PrivateRoute>
           }
         />
