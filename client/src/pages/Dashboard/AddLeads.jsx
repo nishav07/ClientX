@@ -10,9 +10,15 @@ export default function AddLeads(){
         console.log("data to submit in CRM" , data);
 
       try {
-           let res = await api.post("/addLeads",{data:data});
+        let res = await api.post("/addLeads",{data:data});
         console.log("res from addleads api",res);
-        navigate("/dashboard");
+       if(res.data.added){
+          navigate("/dashboard");
+       } else {
+          navigate("/dashboard/leads");
+       }
+       
+
       } catch (err) {
          console.log(err);
          navigate("/");

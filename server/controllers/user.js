@@ -10,8 +10,15 @@ export function dashboard(req,res){
    return res.json({msg:"ok",data:user});
 }
 
-export function addLeads(req,res){
-    let data = req.body;
-    console.log("add leads data from backend",data);
-    return res.json({msg:"ok"});
+export async function addLeads(req,res){
+    let {name,email,phone,source,interest} = req.body.data;
+    let userId = req.user.id;
+    console.log("add leads data from backend",{name,email,phone,source,interest});
+     try{
+const [rows] = await pool.query("INSERT INTO leads (name,email,phone,source,interest,userId) VALUES(?,?,?,?,?,?)",[name,email,phone,source,interest,userId]);
+    return res.json({added:true});
+     } catch(err){
+        console.log(err);
+        return res.json({added:false});
+     }
 }
