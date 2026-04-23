@@ -8,6 +8,6 @@ router.post("/signup",signup);
 router.post("/login",login);
 router.get("/dashboard",verifyToken,dashboard);
 router.post("/addLeads",verifyToken,addLeads);
-router.put("/statusUpdate",verifyToken,statusUpdate)
+router.put("/statusUpdate/:id",verifyToken,statusUpdate)
 
 export default router;

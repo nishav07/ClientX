@@ -39,10 +39,15 @@ const [rows] = await pool.query("INSERT INTO leads (name,email,phone,source,inte
 
 export async function statusUpdate(req,res){
     let userId = req.user.userId;
+    let { status } = req.body;
+
+    console.log("status from jsx",status);
 
     try {
-        const [rows] = await pool.query("ALTER TABLE UPDATE lea")
+       const [rows] = await pool.query("UPDATE leads SET status = ? WHERE userId = ?",[status,userId]);
+       return res.json({chaged:true});
     } catch (error) {
-        
+        console.log(err)
+        return res.json({chaged:false});
     }
 }

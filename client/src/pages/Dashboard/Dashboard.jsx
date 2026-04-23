@@ -7,7 +7,7 @@ export default function Dashboard(){
 
     try {
 
-      await api.put(`/leads/${leadId}`, {
+      await api.put(`/statusUpdate/${leadId}`, {
         status: newStatus,
       });
 
