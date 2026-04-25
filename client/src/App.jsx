@@ -7,6 +7,7 @@ import Layout from './features/Layout.jsx';
 import PrivateRoute from "./features/PrivateRoute.jsx" 
 import { AuthProvider } from './features/AuthContext.jsx';
 import { LeadProvider } from './features/leadContext.jsx';
+import { ToastProvider } from './features/ToastContext.jsx';
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+    <ToastProvider>
     <AuthProvider>
     <Routes>
     <Route path='/' element={<Landing/>} />
@@ -33,6 +35,7 @@ function App() {
 
   </Routes>
   </AuthProvider>
+  </ToastProvider>
     </>
   )
 }

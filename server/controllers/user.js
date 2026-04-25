@@ -18,8 +18,8 @@ export async function dashboard(req,res){
     return res.json({msg:"data not found"});
    }
 
-  
 }
+
 
 export async function addLeads(req,res){
     let {name,email,phone,source,interest} = req.body.data;
@@ -36,7 +36,6 @@ const [rows] = await pool.query("INSERT INTO leads (name,email,phone,source,inte
      }
 }
 
-
 export async function statusUpdate(req,res){
     let userId = req.user.userId;
     let { status } = req.body;
@@ -45,9 +44,9 @@ export async function statusUpdate(req,res){
 
     try {
        const [rows] = await pool.query("UPDATE leads SET status = ? WHERE userId = ?",[status,userId]);
-       return res.json({chaged:true});
+       return res.json({updated:true});
     } catch (error) {
         console.log(err)
-        return res.json({chaged:false});
+        return res.json({updated:false});
     }
 }

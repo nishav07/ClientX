@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../features/AuthContext";
+import { useToast } from "../../features/ToastContext";
 
 
 
 export default function Login(){
+    const { showToast } = useToast();
     const { setUser } = useAuth();
      const navigate = useNavigate();
       const { register, handleSubmit } = useForm();
@@ -27,8 +29,10 @@ export default function Login(){
             setUser({userName:userName,email:email,userId:userId});
             console.log("token save krte time",res.data.token)
             localStorage.setItem("token",res.data.token)
+            showToast("Login Successful", "success");
             navigate("/dashboard");
         } else {
+            showToast("user not found with this err", "error");
             navigate("/")
         }
         
