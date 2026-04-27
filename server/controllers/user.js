@@ -50,3 +50,18 @@ export async function statusUpdate(req,res){
         return res.json({updated:false});
     }
 }
+
+export async function filterData(req,res) {
+    let userId = req.user.userId;
+
+     try {
+    const [rows] = await pool.query("SELECT * FROM leads WHERE userId = ?",[userId]);
+    console.log("data of leads",rows);
+
+    
+     return res.json({data:user,leads:rows});
+   } catch (error) {
+    console.log(error)
+    return res.json({msg:"data not found"});
+   }
+}
