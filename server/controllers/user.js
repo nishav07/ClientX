@@ -12,7 +12,19 @@ export async function dashboard(req,res){
    try {
     const [rows] = await pool.query("SELECT * FROM leads WHERE userId = ?",[userId]);
     console.log("data of leads",rows);
-     return res.json({data:user,leads:rows});
+
+     let count = rows.reduce((acc,curr) => {
+        if(acc[curr.status]){
+            acc[curr.status]++;
+        } else {
+            acc[curr.status] = 1;
+        }
+        return acc;
+    },{})
+
+    console.log("counts",count)
+
+     return res.json({data:user,leads:rows,count:count});
    } catch (error) {
     console.log(error)
     return res.json({msg:"data not found"});
@@ -39,11 +51,12 @@ const [rows] = await pool.query("INSERT INTO leads (name,email,phone,source,inte
 export async function statusUpdate(req,res){
     let userId = req.user.userId;
     let { status } = req.body;
+    let leadId = req.params.id;
 
-    console.log("status from jsx",status);
+    console.log("status from jsx",status,leadId);
 
     try {
-       const [rows] = await pool.query("UPDATE leads SET status = ? WHERE userId = ?",[status,userId]);
+       const [rows] = await pool.query("UPDATE leads SET status = ? WHERE id = ? AND userId = ?",[status,leadId,userId,]);
        return res.json({updated:true});
     } catch (error) {
         console.log(err)
@@ -56,9 +69,21 @@ export async function filterData(req,res) {
 
      try {
     const [rows] = await pool.query("SELECT * FROM leads WHERE userId = ?",[userId]);
-    console.log("data of leads",rows);
+    console.log("data of leadssss",rows);
 
-    
+   
+
+    let count = rows.reduce((acc,curr) => {
+        if(acc[curr.status]){
+            acc[curr.status]++;
+        } else {
+            acc[curr.status] = 1;
+        }
+        return acc;
+    },{})
+
+    console.log("counts",count)
+
      return res.json({data:user,leads:rows});
    } catch (error) {
     console.log(error)

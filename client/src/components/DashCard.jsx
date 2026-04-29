@@ -1,4 +1,4 @@
-export default function DashCard({title="lol",body="test"}){
+export default function DashCard({title,body}){
     return(<>
     <div id="dashCards" className="min-h-30 min-w-85 border-2 border-black flex items-center justify-center rounded-lg m-2">
        <div className="flex flex-col gap-1">

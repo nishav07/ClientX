@@ -5,6 +5,7 @@ const LeadContext = createContext();
 
 export const LeadProvider = ({ children }) => {
   const [leads, setLeads] = useState([]);
+  const [statusCount,setStatusCount] = useState();
   const [loading2, setLoading2] = useState(true);
 
   useEffect(() => {
@@ -18,9 +19,12 @@ export const LeadProvider = ({ children }) => {
       try {
         const { data } = await api.get("/dashboard");
         setLeads(data.leads);
+        console.log("counting data",data.count)
+        setStatusCount(data.count);
       } catch (err) {
         console.log("fetch context se err aata hua ",err);
         setLeads(null);
+        setStatusCount(null)
       } finally {
         setLoading2(false);
       }
@@ -30,7 +34,7 @@ export const LeadProvider = ({ children }) => {
   }, []);
 
   return (
-    <LeadContext.Provider value={{ leads, setLeads, loading2 }}>
+    <LeadContext.Provider value={{ leads, setLeads, loading2 ,statusCount,setStatusCount}}>
       {children}
     </LeadContext.Provider>
   );

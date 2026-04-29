@@ -32,6 +32,7 @@ useEffect(() => {
       const { data } = await api.get('/dashboard');
       
       console.log("dashboard response:", data)
+      console.log(data.count.closed)
       setUser(data.data)
     } catch(err) {
       console.log("ERROR:", err.response?.status, err.response?.data)

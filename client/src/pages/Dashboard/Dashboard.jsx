@@ -5,19 +5,22 @@ import DashCard from "../../components/DashCard";
 import { useEffect,useState } from "react";
 
 export default function Dashboard(){
-  let [filterData,setFilterData] = useState("");
+
+     let { statusCount} = useLeads();
 
   useEffect(() => {
     let fetchFilter = async() => {
     //  let res = api.get
     }
+
+    console.log(statusCount)
   },[])
 
   return (<>
   <div id="dashBoard" className="w-full flex flex-wrap ">
-    <DashCard/>
-     <DashCard/>
-      <DashCard/>
+
+    <DashCard title="closed" body={statusCount}/>
+   
   </div>
   </>)
 }
