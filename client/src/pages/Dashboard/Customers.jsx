@@ -48,7 +48,7 @@ export default function Customers(){
 
         <div
           key={lead.id}
-          className="grid grid-cols-4 gap-4 bg-white shadow-md rounded-2xl p-5 border border-gray-200 hover:shadow-lg transition"
+          className="grid grid-cols-5 gap-4 bg-white shadow-md rounded-2xl p-5 border border-gray-200 hover:shadow-lg transition"
         >
 
           <div>
@@ -106,6 +106,11 @@ export default function Customers(){
             <p>
               {new Date(lead.created_at).toLocaleDateString()}
             </p>
+          </div>
+
+
+          <div className="flex items-center justify-center">
+            <i class="fa-regular fa-pen-to-square"></i>
           </div>
 
         </div>

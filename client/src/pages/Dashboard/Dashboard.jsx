@@ -6,20 +6,18 @@ import { useEffect,useState } from "react";
 
 export default function Dashboard(){
 
-     let { statusCount} = useLeads();
+     let { leads,loading2,statusCount } = useLeads();
+     
+     console.log("lol",leads,statusCount);
 
-  useEffect(() => {
-    let fetchFilter = async() => {
-    //  let res = api.get
+     if(loading2){
+        return <h1>loding....</h1>
     }
-
-    console.log(statusCount)
-  },[])
 
   return (<>
   <div id="dashBoard" className="w-full flex flex-wrap ">
-
-    <DashCard title="closed" body={statusCount}/>
+    <DashCard title="Closed" body={statusCount.closed} />
+    <DashCard title="qualified" body={statusCount.qualified}/>
    
   </div>
   </>)
