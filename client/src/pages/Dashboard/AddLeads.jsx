@@ -6,7 +6,7 @@ import { useLeads } from "../../features/leadContext";
 
 export default function AddLeads(){
    let navigate = useNavigate();
-   const { leads,fetchLeads } = useLeads();
+    let { leads, loading2, setLeads,fetchLeads} = useLeads();
 
      const onSubmit = async(data) => {
         console.log("data to submit in CRM" , data);

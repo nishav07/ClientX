@@ -90,3 +90,19 @@ export async function filterData(req,res) {
     return res.json({msg:"data not found"});
    }
 }
+
+export async function deleteLeads(req,res) {
+    let userId = req.user.userId;
+    let leadId = req.params.id;
+
+     console.log("delete req for ",userId,leadId);
+
+    try {
+       const [rows] = await pool.query("DELETE FROM leads WHERE userId = ? AND id = ?",[userId,leadId]);
+       return res.json({deleted:true});
+    } catch (error) {
+        console.log(error)
+        return res.json({deleted:false});
+    }
+
+}

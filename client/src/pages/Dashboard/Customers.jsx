@@ -7,7 +7,21 @@ export default function Customers(){
     let { showToast } = useToast();
 
 
-    
+  const handleDeleteReq = async (leadId) => {
+    try{
+      let res = await api.delete(`/deleteLeads/${leadId}`);
+    console.log("delete ke baad ka res",res);
+
+    if(res.data.deleted){
+      await fetchLeads();
+      showToast("lead deleted","success")
+    }
+    } catch (err){
+      console.log(err,"backend se")
+      showToast("lead not deleted","error")
+    }
+  }
+
 
   const handleStatusChange = async (leadId, newStatus) => {
 
@@ -27,8 +41,8 @@ export default function Customers(){
           ? { ...lead, status: newStatus }
           : lead
       );
-
-      showToast("status updated","info")
+      await fetchLeads();
+      showToast("status updated","success")
       setLeads(updatedLeads);
     } else {
       showToast("status not updated","error")
@@ -78,7 +92,7 @@ export default function Customers(){
           </div>
 
           <div className="flex items-center justify-center text-2xl">
-            <i className="fa-solid fa-trash-can text-red-500"></i>
+            <i className="fa-solid fa-trash-can text-red-500" onClick={() => handleDeleteReq(lead.id)}></i>
           </div>
 
           <div>

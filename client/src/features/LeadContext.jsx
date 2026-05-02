@@ -32,11 +32,11 @@ export const LeadProvider = ({ children }) => {
 
 
   useEffect(() => {
-    fetchLeads();
+   fetchLeads();
   }, []);
 
   return (
-    <LeadContext.Provider value={{ leads, setLeads, loading2 ,statusCount, setStatusCount, fetchLeads}}>
+    <LeadContext.Provider value={{fetchLeads, leads, setLeads, loading2 ,statusCount, setStatusCount}}>
       {children}
     </LeadContext.Provider>
   );
