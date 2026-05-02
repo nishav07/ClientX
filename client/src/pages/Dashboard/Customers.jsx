@@ -3,8 +3,11 @@ import api from "../../helperFx/api";
 import { useToast } from "../../features/ToastContext";
 
 export default function Customers(){
-    let { leads, loading2, setLeads} = useLeads();
+    let { leads, loading2, setLeads,fetchLeads} = useLeads();
     let { showToast } = useToast();
+
+
+    
 
   const handleStatusChange = async (leadId, newStatus) => {
 
@@ -16,6 +19,7 @@ export default function Customers(){
 
 
       console.log("res for lead updataion",res.data.updated)
+      console.log("fetch leads duri jagah",leads)
      
     if(res.data.updated){
         const updatedLeads = leads.map((lead) =>
@@ -73,6 +77,10 @@ export default function Customers(){
             </span>
           </div>
 
+          <div className="flex items-center justify-center text-2xl">
+            <i className="fa-solid fa-trash-can text-red-500"></i>
+          </div>
+
           <div>
             <p className="text-xs text-gray-500">Interest</p>
             <p>{lead.interest}</p>
@@ -109,8 +117,8 @@ export default function Customers(){
           </div>
 
 
-          <div className="flex items-center justify-center">
-            <i class="fa-regular fa-pen-to-square"></i>
+          <div className=" h-full w-full flex items-center justify-center text-2xl">
+            <i className="fa-regular fa-pen-to-square text-blue-500"></i>
           </div>
 
         </div>

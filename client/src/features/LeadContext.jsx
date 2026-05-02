@@ -8,8 +8,8 @@ export const LeadProvider = ({ children }) => {
   const [statusCount,setStatusCount] = useState();
   const [loading2, setLoading2] = useState(true);
 
-  useEffect(() => {
-    const fetchLeads = async () => {
+
+  const fetchLeads = async () => {
       const token = localStorage.getItem('token');
 
       if(!token){
@@ -30,11 +30,13 @@ export const LeadProvider = ({ children }) => {
       }
     };
 
+
+  useEffect(() => {
     fetchLeads();
   }, []);
 
   return (
-    <LeadContext.Provider value={{ leads, setLeads, loading2 ,statusCount,setStatusCount}}>
+    <LeadContext.Provider value={{ leads, setLeads, loading2 ,statusCount, setStatusCount, fetchLeads}}>
       {children}
     </LeadContext.Provider>
   );
