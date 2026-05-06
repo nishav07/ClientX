@@ -59,7 +59,7 @@ useEffect(() => {
                 <Route path='customers' element={<Customers/>} />
                 <Route path="leads" element={<Leads/>}/>
                  <Route path="add" element={<AddLeads/>}/>
-                 <Route path="edit" element={<EditLeads/>}/>
+                 <Route path="edit/:id" element={<EditLeads/>}/>
             </Routes>
       </main>
     </div>

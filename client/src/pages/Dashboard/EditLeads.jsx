@@ -1,5 +1,5 @@
 import EditLeadsForm from "../../components/EditLeadsForm"
-
+import api from "../../helperFx/api";
 
 export default function AddLeads(){
 
@@ -7,6 +7,6 @@ export default function AddLeads(){
  console.log("data edit Crm" , data);
     }
     return (
-        <EditLeadsForm onSubmit={onSubmit}/>
+        <EditLeadsForm onSubmit={onSubmit} />
     )
 }

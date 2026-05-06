@@ -106,3 +106,14 @@ export async function deleteLeads(req,res) {
     }
 
 }
+
+export async function leadData(req,res){
+    let userId = req.user.userId;
+    let leadId = req.params.id;
+
+    try {
+        
+    } catch (err) {
+        
+    }
+}

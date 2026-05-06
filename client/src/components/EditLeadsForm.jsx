@@ -1,13 +1,35 @@
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import api from "../helperFx/api";
+import { useParams } from "react-router-dom";
+
+
 
 export default function EditLeadsForm({onSubmit}){
-    const {handleSubmit,register}  = useForm();
-    return(<div id="AddLeads" className=" flex-1" >
+
+    const { id } = useParams();
+
+    const {handleSubmit,register,reset}  = useForm({
+  defaultValues: {
+    email:"",
+    interest:"",
+    name:"",
+    phone:"",
+    source:""
+  }
+});
+
+useEffect(() => {
+    console.log("id from edit",id)
+},[id])
+
+
+    return(<div id="EditLeads" className=" flex-1" >
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex">
 
         <div id="leftSide" className="w-1/2 m-2  flex flex-col gap-4 ">
-           <input type="text" placeholder="enter your Name" value="lol" className="border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400
+           <input type="text" placeholder="enter your Name" className="border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400
 " {...register("name",{required:true})} />
             <input type="email" placeholder="enter your email" className="border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400
 " {...register("email",{required:true})} />

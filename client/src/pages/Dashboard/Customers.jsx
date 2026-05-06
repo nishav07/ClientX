@@ -120,8 +120,8 @@ export default function Customers(){
           </div>
 
           <div>
-            <p className="text-xs text-gray-500">User ID</p>
-            <p>{lead.userId}</p>
+            <p className="text-xs text-gray-500">Lead ID</p>
+            <p>{lead.id}</p>
           </div>
 
           <div>
@@ -133,7 +133,7 @@ export default function Customers(){
 
 
           <div className=" h-full w-full flex items-center justify-center text-2xl">
-            <Link to="/dashboard/edit"><i className="fa-regular fa-pen-to-square text-blue-500"></i></Link>
+            <Link to={`/dashboard/edit/${lead.id}`}><i className="fa-regular fa-pen-to-square text-blue-500"></i></Link>
           </div>
 
         </div>
