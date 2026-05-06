@@ -1,6 +1,7 @@
 import { useLeads } from "../../features/leadContext"
 import api from "../../helperFx/api";
 import { useToast } from "../../features/ToastContext";
+import { Link } from "react-router-dom";
 
 export default function Customers(){
     let { leads, loading2, setLeads,fetchLeads} = useLeads();
@@ -132,7 +133,7 @@ export default function Customers(){
 
 
           <div className=" h-full w-full flex items-center justify-center text-2xl">
-            <i className="fa-regular fa-pen-to-square text-blue-500"></i>
+            <Link to="/dashboard/edit"><i className="fa-regular fa-pen-to-square text-blue-500"></i></Link>
           </div>
 
         </div>

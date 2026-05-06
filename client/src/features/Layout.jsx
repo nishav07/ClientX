@@ -11,6 +11,7 @@ import Customers from "../pages/Dashboard/Customers";
 import Leads from "../pages/Dashboard/Leads";
 import { Navigate } from "react-router-dom";
 import AddLeads from "../pages/Dashboard/AddLeads";
+import EditLeads from "../pages/Dashboard/EditLeads";
 
 
 export default function Layout(){
@@ -58,6 +59,7 @@ useEffect(() => {
                 <Route path='customers' element={<Customers/>} />
                 <Route path="leads" element={<Leads/>}/>
                  <Route path="add" element={<AddLeads/>}/>
+                 <Route path="edit" element={<EditLeads/>}/>
             </Routes>
       </main>
     </div>
