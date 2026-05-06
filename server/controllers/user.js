@@ -107,13 +107,26 @@ export async function deleteLeads(req,res) {
 
 }
 
+export async function editLeads(req,res) {
+    let userId = req.user.userId;
+    let leadId = req.params.id;
+
+    try {
+        console.log("edit ke liye aaya hua data")
+    } catch (error) {
+        console.log("edit route se aaya err",error)
+    }
+}
+
 export async function leadData(req,res){
     let userId = req.user.userId;
     let leadId = req.params.id;
 
     try {
-        
+        const [rows] = await pool.query("SELECT * FROM leads WHERE userId = ? AND id = ?",[userId,leadId]);
+        console.log("single lead from DB",leadId);
+        return res.json({lead:rows[0]});
     } catch (err) {
-        
+        return console.log("err",err)
     }
 }
