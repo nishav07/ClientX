@@ -7,11 +7,11 @@ import { verification } from "../middlewares/hashing.js";
 export async function dashboard(req,res){
     let user = req.user;
     let userId = req.user.userId;
-   console.log("user from backend",user,userId);
+  
 
    try {
     const [rows] = await pool.query("SELECT * FROM leads WHERE userId = ?",[userId]);
-    console.log("data of leads",rows);
+   
 
      let count = rows.reduce((acc,curr) => {
         if(acc[curr.status]){
@@ -22,7 +22,6 @@ export async function dashboard(req,res){
         return acc;
     },{})
 
-    console.log("counts",count)
 
      return res.json({data:user,leads:rows,count:count});
    } catch (error) {
@@ -36,8 +35,7 @@ export async function dashboard(req,res){
 export async function addLeads(req,res){
     let {name,email,phone,source,interest} = req.body.data;
     let userId = req.user.userId;
-    console.log("add leads data from backend",{name,email,phone,source,interest,userId});
-    console.log("userrrrr",userId);
+    
      try{
 const [rows] = await pool.query("INSERT INTO leads (name,email,phone,source,interest,userId) VALUES(?,?,?,?,?,?)",[name,email,phone,source,interest,userId]);
     return res.json({added:true});
@@ -53,7 +51,7 @@ export async function statusUpdate(req,res){
     let { status } = req.body;
     let leadId = req.params.id;
 
-    console.log("status from jsx",status,leadId);
+   
 
     try {
        const [rows] = await pool.query("UPDATE leads SET status = ? WHERE id = ? AND userId = ?",[status,leadId,userId,]);
@@ -69,9 +67,7 @@ export async function filterData(req,res) {
 
      try {
     const [rows] = await pool.query("SELECT * FROM leads WHERE userId = ?",[userId]);
-    console.log("data of leadssss",rows);
-
-   
+    
 
     let count = rows.reduce((acc,curr) => {
         if(acc[curr.status]){
@@ -81,8 +77,6 @@ export async function filterData(req,res) {
         }
         return acc;
     },{})
-
-    console.log("counts",count)
 
      return res.json({data:user,leads:rows});
    } catch (error) {
@@ -95,8 +89,6 @@ export async function deleteLeads(req,res) {
     let userId = req.user.userId;
     let leadId = req.params.id;
 
-     console.log("delete req for ",userId,leadId);
-
     try {
        const [rows] = await pool.query("DELETE FROM leads WHERE userId = ? AND id = ?",[userId,leadId]);
        return res.json({deleted:true});
@@ -105,17 +97,6 @@ export async function deleteLeads(req,res) {
         return res.json({deleted:false});
     }
 
-}
-
-export async function editLeads(req,res) {
-    let userId = req.user.userId;
-    let leadId = req.params.id;
-
-    try {
-        console.log("edit ke liye aaya hua data")
-    } catch (error) {
-        console.log("edit route se aaya err",error)
-    }
 }
 
 export async function leadData(req,res){
@@ -128,5 +109,21 @@ export async function leadData(req,res){
         return res.json({lead:rows[0]});
     } catch (err) {
         return console.log("err",err)
+    }
+}
+
+
+export async function editLeads(req,res) {
+    let userId = req.user.userId;
+    let leadId = req.params.id;
+    let {name,email,phone,source,interest} = req.body.data;
+
+    try {
+        console.log("edit ke liye aaya hua data",{name,email,phone,source,interest});
+        const [rows] = await pool.query("UPDATE leads SET name = ?,email = ?,phone = ?,source = ?,interest = ? WHERE userId = ? AND id = ?",[name,email,phone,source,interest,userId,leadId])
+        res.json({allGood:true});
+    } catch (error) {
+        res.json({allGood:false})
+        console.log("edit route se aaya err",error)
     }
 }

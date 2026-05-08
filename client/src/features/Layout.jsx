@@ -22,18 +22,8 @@ useEffect(() => {
   
   const fetchUser = async () => {
     try {
-      // const token = localStorage.getItem('token');
-      // console.log("token fetch krne se pehle",token)
-      // const { data } = await axios.get('http://localhost:8080/dashboard', {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`
-      //   }
-      // })
 
       const { data } = await api.get('/dashboard');
-      
-      console.log("dashboard response:", data)
-      console.log(data.count.closed)
       setUser(data.data)
     } catch(err) {
       console.log("ERROR:", err.response?.status, err.response?.data)
@@ -45,7 +35,6 @@ useEffect(() => {
 }, [])
     
     return (<>
-    {/* <h1>User Dashboard</h1> */}
      {user ? (
   <div id="container" className="h-screen flex">
     <SideNav/>
