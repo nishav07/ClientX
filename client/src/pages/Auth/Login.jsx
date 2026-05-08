@@ -37,6 +37,7 @@ export default function Login(){
         }
         
     } catch (error) {
+         showToast("internal server error", "error");
         console.log("loginn jsx waal er",error);
     }
 

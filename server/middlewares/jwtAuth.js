@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken'
+// import { pool } from '../config/sql'
+import { pool } from '../config/sql.js'
 
 
-export const verifyToken = (req, res, next) => {
+export const verifyToken = async (req, res, next) => {
 
   console.log("yaaha tak sab chal rha hai")
   const authHeader = req.headers['authorization']
@@ -15,9 +17,15 @@ export const verifyToken = (req, res, next) => {
   try {
     
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    
-    
+
     req.user = decoded
+
+     const [rows] = await pool.query("SELECT * FROM users WHERE userName = ?",decoded.userName);
+
+     if(rows.length === 0){
+      return res.status(401).json({message:"User not found"})
+     }
+
      console.log("yaaha tak bhi chala hai",decoded)
     next()
     

@@ -35,7 +35,10 @@ async function login(req,res){
 
         const isPassCorrect = await verification(password,hashPass);
 
+        console.log("is pass correct",isPassCorrect)
+
         if(isPassCorrect){
+            console.log("password sahi h")
               const token = jwt.sign(
                             {
                                 userId: rows[0].userId,
@@ -48,7 +51,7 @@ async function login(req,res){
 
             return res.json({ message: "login ho gya" ,success:true,userData:rows[0],token:token});
         } else {
-            return res.status(400).json({ message: "password galat haiiii" ,success:false});
+            return res.status(400).json({ message: "password galat hai" ,success:false});
         }
 
     } catch (error) {

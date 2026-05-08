@@ -16,9 +16,10 @@ export default function Dashboard(){
 
   return (<>
   <div id="dashBoard" className="w-full flex flex-wrap ">
-    <DashCard title="Closed" body={statusCount.closed} />
+    <DashCard title="new" body={statusCount.new} />
+    <DashCard title="Contacted" body={statusCount.contacted}/>
     <DashCard title="qualified" body={statusCount.qualified}/>
-   
+     <DashCard title="Closed" body={statusCount.closed} />
   </div>
   </>)
 }

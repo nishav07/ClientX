@@ -16,10 +16,9 @@ export default function AddLeads(){
     let onSubmit = async (data) => {
      console.log("data edit Crm" , data);
       
-
+     
      try {
         const res = await api.patch(`/editLeads/${id}`,{data:data});
-
         console.log("res from edit server",res.data);
         
         if(res.data.allGood){
