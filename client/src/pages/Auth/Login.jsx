@@ -21,19 +21,20 @@ export default function Login(){
         console.log("response  ",res);
         console.log(res.data)
 
-        let {userName,email,userId} = res.data.userData;
-
-        console.log("data login mai jo save ho rha",{userName,email,userId})
+        
 
          if(res.data.success == true){
+            let {userName,email,userId} = res.data.userData;
+        console.log("data login mai jo save ho rha",{userName,email,userId})
+
             setUser({userName:userName,email:email,userId:userId});
             console.log("token save krte time",res.data.token)
             localStorage.setItem("token",res.data.token)
             showToast("Login Successful", "success");
             navigate("/dashboard");
         } else {
-            showToast("user not found with this err", "error");
-            navigate("/")
+            showToast("user not found with this cresidentials", "error");
+            navigate("/auth/login")
         }
         
     } catch (error) {

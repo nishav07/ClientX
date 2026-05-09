@@ -14,6 +14,7 @@ export default function SideNav(){
             <Link to="/dashboard/home"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">home</button></Link>
             <Link to="/dashboard/customers"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">customers</button></Link>
             <Link to="/dashboard/leads"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">leads</button></Link>
+             <Link to="/dashboard/apiKeys"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">API keys</button></Link>
 
 
         </div>

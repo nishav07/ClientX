@@ -12,6 +12,7 @@ import Leads from "../pages/Dashboard/Leads";
 import { Navigate } from "react-router-dom";
 import AddLeads from "../pages/Dashboard/AddLeads";
 import EditLeads from "../pages/Dashboard/EditLeads";
+import ApiKey from "../pages/Dashboard/ApiKey";
 
 
 export default function Layout(){
@@ -27,7 +28,7 @@ useEffect(() => {
       setUser(data.data)
     } catch(err) {
       console.log("ERROR:", err.response?.status, err.response?.data)
-      navigate('/login')
+      navigate('/auth/login')
     }
   }
 
@@ -49,6 +50,7 @@ useEffect(() => {
                 <Route path="leads" element={<Leads/>}/>
                  <Route path="add" element={<AddLeads/>}/>
                  <Route path="edit/:id" element={<EditLeads/>}/>
+                 <Route path="apiKeys" element={<ApiKey/>}/>
             </Routes>
       </main>
     </div>
