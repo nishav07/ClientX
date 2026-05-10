@@ -12,5 +12,3 @@ export function generateApiKey() {
   console.log("prefix",prefix)
   return { raw, hash, prefix };
 }
-
-generateApiKey();

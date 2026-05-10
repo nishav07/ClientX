@@ -3,6 +3,7 @@ const router = express.Router();
 import { signup,login } from '../controllers/auth.js';
 import { verifyToken } from '../middlewares/jwtAuth.js';
 import { dashboard,addLeads,statusUpdate,filterData,deleteLeads,leadData,editLeads} from '../controllers/user.js';
+import{getApiKey} from "../controllers/getKeys.js";
 
 router.post("/signup",signup);
 router.post("/login",login);
@@ -13,5 +14,6 @@ router.get("/filterData",verifyToken,filterData);
 router.delete("/deleteLeads/:id",verifyToken,deleteLeads);
 router.patch("/editLeads/:id",verifyToken,editLeads)
 router.get("/api/leads/:id",verifyToken,leadData)
+router.get("/getApiKey",verifyToken,getApiKey)
 
 export default router;
