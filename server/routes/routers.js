@@ -14,6 +14,6 @@ router.get("/filterData",verifyToken,filterData);
 router.delete("/deleteLeads/:id",verifyToken,deleteLeads);
 router.patch("/editLeads/:id",verifyToken,editLeads)
 router.get("/api/leads/:id",verifyToken,leadData)
-router.get("/getApiKey",verifyToken,getApiKey)
+router.post("/getApiKey",verifyToken,getApiKey)
 
 export default router;
