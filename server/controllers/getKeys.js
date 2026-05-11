@@ -39,3 +39,15 @@ try {
     return res.status(500).json({generated:false});
 }
 }
+
+
+export async function  apiKeys(req,res) {
+    let userId = req.user.userId;
+
+    try {
+         const [rows] = await pool.query("SELECT * FROM apikeys WHERE userId = ?",[userId]);
+         return res.status(200).json({keys:rows})
+    } catch (error) {
+        return res.status(500).json({msg:"data not fetched"});
+    }
+}

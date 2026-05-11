@@ -2,10 +2,12 @@ import { useState } from "react"
 import Modal from "../../components/Modal";
 import api from "../../helperFx/api";
 import { useToast } from "../../features/ToastContext";
+import { useEffect } from "react";
 
 export default function ApiKey(){
     const [isOpen,setIsOpen] = useState(false)
     const [apiKey,setApiKey] = useState(null);
+    const [allKey,setAllKey] = useState(null)
     let {showToast} = useToast();
 
 
@@ -29,29 +31,27 @@ export default function ApiKey(){
     }
 
 
-//     const fetchLeads = async () => {
+    const fetchKeys = async () => {
 
-//       try {
-//         const { data } = await api.get("/dashboard");
-//         setLeads(data.leads);
-//         console.log("counting data",data.count)
-//         setStatusCount(data.count);
-//       } catch (err) {
-//         console.log("fetch context se err aata hua ",err);
-//         setLeads(null);
-//         setStatusCount(null)
-//       } finally {
-//         setLoading2(false);
-//       }
-//     };
+      try {
+        const { data } = await api.get("/apiKeys");
+        setAllKey(data.keys);
+        console.log("data from backend for apikeys",data)
+      } catch (err) {
+        console.log("fetch context se err aata hua ",err);
+        setAllKey(null);
+      } 
+    }
 
 
-//   useEffect(() => {
-//    fetchLeads();
-//   }, []);
+        useEffect(() => {
+        fetchKeys();
+        }, []);
 
     return(<div id="apiKey">
         <div>
+
+            { allKey &&}
             <button className="h-12 w-auto p-2 bg-black text-white rounded-lg" onClick={() => setIsOpen(true)}>create Api key</button>
             <div id="modal">
                 {isOpen && <Modal onSubmit={onSubmit} setIsOpen={setIsOpen}/>}
