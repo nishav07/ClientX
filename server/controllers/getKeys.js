@@ -66,7 +66,7 @@ export async function  deleteApiKey(req,res) {
 }
 
 
-export async function addLead(req,res) {
+export async function apiAddLead(req,res) {
 
     
      if(!req.body?.data){
@@ -74,7 +74,7 @@ export async function addLead(req,res) {
     }
 
 
-    let userId = req.user.userId;
+    let userId = req.userId;
 
     console.log("api wala data",userId,req.body.data);
 

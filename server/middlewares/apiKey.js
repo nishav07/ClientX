@@ -1,7 +1,7 @@
 import { pool } from '../config/sql.js'
 import { getHash } from '../config/apiKey.js'
 
-export default async function verifyApiKey(req,res,next) {
+export async function verifyApiKey(req,res,next) {
     let apiKey = req.headers['x-api-key'];
     let hash = getHash(apiKey);
 
