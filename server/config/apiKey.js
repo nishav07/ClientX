@@ -14,13 +14,9 @@ export function generateApiKey() {
 }
 
 
-export function verifyKey(userRawKey,dbHashKey,){
+export function getHash(userRawKey,){
   const hash = crypto.createHash('sha256').update(userRawKey).digest('hex');
-
-  if(hash === dbHashKey){
-    return true
-  } else {
-    false
-  }
-7
+  return hash
 }
+
+

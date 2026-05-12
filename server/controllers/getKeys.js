@@ -64,3 +64,20 @@ export async function  deleteApiKey(req,res) {
         return res.json({deleted:false});
     }
 }
+
+
+export async function addLead(req,res) {
+
+    
+     if(!req.body?.data){
+        return res.status(404).json({msg:"data can not be null"});
+    }
+
+
+    let userId = req.user.userId;
+
+    console.log("api wala data",userId,req.body.data);
+
+     return res.status(200).json({msg:"sab changaa siiiiiiiiiiii"})
+
+}
