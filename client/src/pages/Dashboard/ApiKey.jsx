@@ -89,7 +89,7 @@ export default function ApiKey(){
             ) )}</div>}
 
 
-            <button className="h-12 w-auto p-2 bg-black text-white rounded-lg" onClick={() => setIsOpen(true)}>create Api key</button>
+            <button className="h-12 w-auto p-2 mt-2 bg-black text-white rounded-lg" onClick={() => setIsOpen(true)}>create Api key</button>
             <div id="modal">
                 {isOpen && <Modal onSubmit={onSubmit} setIsOpen={setIsOpen}/>}
             </div>

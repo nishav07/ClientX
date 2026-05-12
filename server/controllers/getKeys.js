@@ -73,11 +73,20 @@ export async function apiAddLead(req,res) {
         return res.status(404).json({msg:"data can not be null"});
     }
 
-
     let userId = req.userId;
 
-    console.log("api wala data",userId,req.body.data);
+    let {name,email,phone,source,interest} = req.body.data;
 
-     return res.status(200).json({msg:"sab changaa siiiiiiiiiiii"})
+    if(!name || !email || !phone || !source || !interest) {
+    return res.status(400).json({msg: "sare fields mandatory hain"});
+}
+    
+     try{
+const [rows] = await pool.query("INSERT INTO leads (name,email,phone,source,interest,userId) VALUES(?,?,?,?,?,?)",[name,email,phone,source,interest,userId]);
+    return res.json({added:true,msg:"sab chngaaa siii"});
+     } catch(err){
+        console.log(err);
+        return res.json({added:false,msg:"kuch cangaa nahi siii"});
+     }
 
 }
