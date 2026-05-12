@@ -3,7 +3,7 @@ const router = express.Router();
 import { signup,login } from '../controllers/auth.js';
 import { verifyToken } from '../middlewares/jwtAuth.js';
 import { dashboard,addLeads,statusUpdate,filterData,deleteLeads,leadData,editLeads} from '../controllers/user.js';
-import{getApiKey,apiKeys} from "../controllers/getKeys.js";
+import{getApiKey,apiKeys,deleteApiKey} from "../controllers/getKeys.js";
 
 router.post("/signup",signup);
 router.post("/login",login);
@@ -15,6 +15,7 @@ router.delete("/deleteLeads/:id",verifyToken,deleteLeads);
 router.patch("/editLeads/:id",verifyToken,editLeads);
 router.get("/api/leads/:id",verifyToken,leadData);
 router.post("/getApiKey",verifyToken,getApiKey);
-router.get("/apiKeys",verifyToken,apiKeys)
+router.get("/apiKeys",verifyToken,apiKeys);
+router.delete("/deleteApiKey/:id",verifyToken,deleteApiKey);
 
 export default router;

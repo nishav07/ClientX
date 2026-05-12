@@ -51,3 +51,16 @@ export async function  apiKeys(req,res) {
         return res.status(500).json({msg:"data not fetched"});
     }
 }
+
+export async function  deleteApiKey(req,res) {
+    let userId = req.user.userId;
+    let leadId = req.params.id;
+
+    try {
+       const [rows] = await pool.query("DELETE FROM apikeys WHERE userId = ? AND id = ?",[userId,leadId]);
+       return res.json({deleted:true});
+    } catch (error) {
+        console.log(error)
+        return res.json({deleted:false});
+    }
+}
