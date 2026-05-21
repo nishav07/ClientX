@@ -40,9 +40,9 @@ useEffect(() => {
   <div id="container" className="h-screen flex">
     <SideNav/>
     <div id="main" className="flex flex-col flex-1 bg-gray-200 ">
-      <Navbar btnTxt="Add Leads" btnPath="/dashboard/add"/>
+      <Navbar variant="dashboard" username={user.userName} btnTxt="Add Leads" btnPath="/dashboard/add"/>
 
-      <main id="dyanamicContent" className="flex-1 overflow-y-scroll bg-mist-200 p-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <main id="dyanamicContent" className="flex-1 mt-16 overflow-y-scroll bg-mist-200 p-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <Routes>
             <Route path="/" element={<Navigate to="home" />} /> 
                 <Route index path='home' element={<Dashboard/>}  />
