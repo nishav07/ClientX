@@ -23,8 +23,7 @@ export default function AddLeadsForm({onSubmit}){
         <input type="text" placeholder="enter your source" className="border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400
 " {...register("source")} />
 
-         <input type="text" placeholder="intrested product" className="border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400
-" {...register("interest")} />
+         <input type="text" placeholder="intrested product" className="border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400" {...register("interest")} />
 
 
                <button className="h-12 p-2 bg-black text-white rounded-lg">Submit</button>

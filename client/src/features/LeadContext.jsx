@@ -42,5 +42,5 @@ export const LeadProvider = ({ children }) => {
   );
 };
 
-// custom hook
+
 export const useLeads = () => useContext(LeadContext);
