@@ -100,3 +100,28 @@ let arr = [
     userId: 9
   }
 ];
+
+let now = new Date();
+
+let recent = arr.filter((val) => {
+  let userDate = new Date(val.created_at);
+  let diff = now - userDate
+  return diff < 7 * 24 * 60 * 60 * 1000;
+})
+
+console.log("recent",recent)
+
+let newarr = arr.map((val) => {
+ return {
+  ...val,
+  created_at:new Date(val.created_at).toLocaleDateString()
+ }
+})
+
+// console.log("new arr",newarr)
+
+let srcWeb = arr.filter((val) => {
+  return val.source === "Website";
+})
+
+// console.log("web src lead",srcWeb);

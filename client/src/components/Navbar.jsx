@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-// Landing page:  <Navbar variant="landing" />
-// Dashboard:     <Navbar variant="dashboard" username="Rahul" />
+
 
 export default function Navbar({ variant = "landing", username = "", btnTxt = "Login / Sign Up", btnPath = "/auth" }) {
   const [menuOpen, setMenuOpen] = useState(false)
