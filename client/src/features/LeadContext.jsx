@@ -6,6 +6,7 @@ const LeadContext = createContext();
 export const LeadProvider = ({ children }) => {
   const [leads, setLeads] = useState([]);
   const [statusCount,setStatusCount] = useState();
+   const [srcCount,setSrcCount] = useState();
   const [loading2, setLoading2] = useState(true);
 
 
@@ -19,8 +20,9 @@ export const LeadProvider = ({ children }) => {
       try {
         const { data } = await api.get("/dashboard");
         setLeads(data.leads);
-        console.log("counting data",data.count)
+        console.log("counting data",data)
         setStatusCount(data.count);
+        setSrcCount(data.sameSrc);
       } catch (err) {
         console.log("fetch context se err aata hua ",err);
         setLeads(null);

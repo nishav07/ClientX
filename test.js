@@ -36,7 +36,7 @@ let arr = [
     phone: '99887 66554',
     source: 'Google Ads',
     created_at: "2026-05-11T18:11:55.000Z",
-    interest: "mobile",
+    interest: "books",
     userId: 5
   },
   {
@@ -101,15 +101,7 @@ let arr = [
   }
 ];
 
-let now = new Date();
 
-let recent = arr.filter((val) => {
-  let userDate = new Date(val.created_at);
-  let diff = now - userDate
-  return diff < 7 * 24 * 60 * 60 * 1000;
-})
-
-console.log("recent",recent)
 
 let newarr = arr.map((val) => {
  return {
@@ -125,3 +117,60 @@ let srcWeb = arr.filter((val) => {
 })
 
 // console.log("web src lead",srcWeb);
+
+
+//q1
+
+console.log(arr.length);
+
+//q2
+
+let sameSrc = {}
+
+arr.forEach((val) => {
+  if(sameSrc[val.source]){
+    sameSrc[val.source]++
+  } else {
+    sameSrc[val.source] = 1
+  }
+})
+
+//q3
+let now = new Date();
+
+let recent = arr.filter((val) => {
+ 
+  let userDate = new Date(val.created_at);
+  
+  let diff = now - userDate
+
+  return diff < 7 * 24 * 60 * 60 * 1000
+})
+
+console.log("recent",recent);
+
+//q4
+
+let interestCount = {};
+
+arr.forEach((val) => {
+  if(interestCount[val.interest]){
+    interestCount[val.interest]++;
+  } else {
+    interestCount[val.interest] = 1;
+  }
+})
+
+let mostIntrested = "";
+let maxCount = 0;
+
+for (let key in interestCount){
+  if(interestCount[key] > maxCount){
+    mostIntrested = interestCount[key];
+    maxCount = key;
+  }
+}
+
+console.log({
+  mostIntrested:maxCount
+})

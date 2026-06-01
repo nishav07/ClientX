@@ -22,8 +22,19 @@ export async function dashboard(req,res){
         return acc;
     },{})
 
+    let sameSrc = {};
+    rows.forEach((val) => {
+  if(sameSrc[val.source]){
+    sameSrc[val.source]++
+  } else {
+    sameSrc[val.source] = 1
+  }
+})
 
-     return res.json({data:user,leads:rows,count:count});
+console.log("same src",sameSrc)
+
+
+     return res.json({data:user,leads:rows,count:count,sameSrc:sameSrc});
    } catch (error) {
     console.log(error)
     return res.json({msg:"data not found"});

@@ -19,7 +19,7 @@ export default function Dashboard(){
     <DashCard title="new" body={statusCount.new} />
     <DashCard title="Contacted" body={statusCount.contacted}/>
     <DashCard title="qualified" body={statusCount.qualified}/>
-     <DashCard title="Closed" body={statusCount.closed} />
+    <DashCard title="Closed" body={statusCount.closed} />
   </div>
   </>)
 }
