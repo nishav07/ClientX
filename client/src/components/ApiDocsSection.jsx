@@ -68,16 +68,16 @@ export default function ApiDocsSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-left">
 
-          {/* Left — Docs */}
+       
           <div className="p-7 rounded-2xl border border-white/7 bg-white/[0.02]">
 
-            {/* Endpoint */}
+           
             <div className="flex items-center gap-3 bg-black/40 border border-white/6 rounded-xl px-4 py-3 mb-7">
               <span className="bg-green-400 text-black text-xs font-black px-2 py-0.5 rounded font-['Sora',sans-serif] tracking-wide">POST</span>
               <span className="text-white/50 text-xs font-mono break-all">{API_ENDPOINT}</span>
             </div>
 
-            {/* Headers table */}
+           
             <p className="text-white/35 text-xs uppercase tracking-widest mb-3 font-['Sora',sans-serif]">Headers</p>
             <div className="flex flex-col gap-2 mb-6">
               {[["Content-Type", "application/json", true], ["x-api-key", "Your API key", true]].map(([k, v, req]) => (
@@ -89,7 +89,7 @@ export default function ApiDocsSection() {
               ))}
             </div>
 
-            {/* Body fields table */}
+         
             <p className="text-white/35 text-xs uppercase tracking-widest mb-3 font-['Sora',sans-serif]">Body (inside data: {})</p>
             <div className="flex flex-col gap-2 mb-6">
               {[["name", "string", true], ["email", "string", true], ["phone", "string", false], ["source", "string", false], ["interest", "string", false]].map(([k, v, req]) => (
@@ -101,7 +101,7 @@ export default function ApiDocsSection() {
               ))}
             </div>
 
-            {/* cURL */}
+          
             <p className="text-white/35 text-xs uppercase tracking-widest mb-3 font-['Sora',sans-serif]">cURL Example</p>
             <div className="relative bg-black/50 border border-white/6 rounded-xl p-4 overflow-auto">
               <button
@@ -114,7 +114,7 @@ export default function ApiDocsSection() {
             </div>
           </div>
 
-          {/* Right — Try It */}
+    
           <div className="p-7 rounded-2xl border border-white/7 bg-white/[0.02] flex flex-col gap-3">
             <h4 className="text-white font-bold text-lg m-0 font-['Sora',sans-serif]">Try it now</h4>
             <p className="text-white/35 text-xs font-['Sora',sans-serif] mb-1">No account needed for testing. Add your API key for real submissions.</p>

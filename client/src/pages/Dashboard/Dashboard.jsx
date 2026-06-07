@@ -1,25 +1,25 @@
 import { useLeads } from "../../features/leadContext"
 import api from "../../helperFx/api";
 import { useToast } from "../../features/ToastContext";
-import DashCard from "../../components/DashCard";
 import { useEffect,useState } from "react";
+import AnalyticsCard from "../../components/AnalyticsCard";
 
 export default function Dashboard(){
 
-     let { leads,loading2,statusCount } = useLeads();
+     let { leads,loading2,statusCount,srcCount } = useLeads();
      
-     console.log("lol",leads,statusCount);
+
 
      if(loading2){
         return <h1>loding....</h1>
     }
 
   return (<>
-  <div id="dashBoard" className="w-full flex flex-wrap ">
-    <DashCard title="new" body={statusCount.new} />
-    <DashCard title="Contacted" body={statusCount.contacted}/>
-    <DashCard title="qualified" body={statusCount.qualified}/>
-    <DashCard title="Closed" body={statusCount.closed} />
+  <div id="dashBoard" className="w-full ">
+    <h1 className="text-3xl">Leads Dashbaord</h1>
+    <div id="dashData" className="grid grid cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+      <AnalyticsCard title="website" icon="fa-solid fa-trash-can" value={srcCount.website} change="12.3%"/>
+    </div>
   </div>
   </>)
 }

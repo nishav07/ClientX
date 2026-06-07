@@ -12,11 +12,11 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen bg-[#050505] flex items-center justify-center overflow-hidden px-6">
 
-      {/* Background glow blobs */}
+    
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-green-400/10 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-[400px] h-[400px] rounded-full bg-green-400/5 blur-3xl pointer-events-none" />
 
-      {/* Grid texture */}
+  
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

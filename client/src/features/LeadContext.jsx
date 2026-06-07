@@ -6,7 +6,7 @@ const LeadContext = createContext();
 export const LeadProvider = ({ children }) => {
   const [leads, setLeads] = useState([]);
   const [statusCount,setStatusCount] = useState();
-   const [srcCount,setSrcCount] = useState();
+   const [srcCount,setSrcCount] = useState({});
   const [loading2, setLoading2] = useState(true);
 
 
@@ -19,10 +19,11 @@ export const LeadProvider = ({ children }) => {
       }
       try {
         const { data } = await api.get("/dashboard");
+        console.log("data from back",data)
         setLeads(data.leads);
-        console.log("counting data",data)
         setStatusCount(data.count);
         setSrcCount(data.sameSrc);
+        console.log("src state",srcCount)
       } catch (err) {
         console.log("fetch context se err aata hua ",err);
         setLeads(null);
@@ -37,8 +38,12 @@ export const LeadProvider = ({ children }) => {
    fetchLeads();
   }, []);
 
+  useEffect(() => {
+  console.log("srcCount updated:", srcCount);
+}, [srcCount]);
+
   return (
-    <LeadContext.Provider value={{fetchLeads, leads, setLeads, loading2 ,statusCount, setStatusCount}}>
+    <LeadContext.Provider value={{fetchLeads, leads, setLeads, loading2 ,statusCount, setStatusCount,srcCount}}>
       {children}
     </LeadContext.Provider>
   );
