@@ -75,9 +75,9 @@ export default function Navbar({ variant = "landing", username = "", btnTxt = "L
           {variant === "dashboard" && (
             <>
               <Link to="/dashboard" className="text-white/60 text-sm font-['Sora',sans-serif]" onClick={() => setMenuOpen(false)}>Dashboard</Link>
-              <Link to="/leads" className="text-white/60 text-sm font-['Sora',sans-serif]" onClick={() => setMenuOpen(false)}>Leads</Link>
-              <Link to="/analytics" className="text-white/60 text-sm font-['Sora',sans-serif]" onClick={() => setMenuOpen(false)}>Analytics</Link>
-              <Link to="/api-keys" className="text-white/60 text-sm font-['Sora',sans-serif]" onClick={() => setMenuOpen(false)}>API Keys</Link>
+              <Link to="/dashboard/leads" className="text-white/60 text-sm font-['Sora',sans-serif]" onClick={() => setMenuOpen(false)}>Leads</Link>
+              <Link to="/dashboard/home" className="text-white/60 text-sm font-['Sora',sans-serif]" onClick={() => setMenuOpen(false)}>Analytics</Link>
+              <Link to="/dashboard/apiKeys" className="text-white/60 text-sm font-['Sora',sans-serif]" onClick={() => setMenuOpen(false)}>API Keys</Link>
             </>
           )}
         </div>
