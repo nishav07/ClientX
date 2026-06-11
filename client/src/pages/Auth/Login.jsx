@@ -43,40 +43,20 @@ export default function Login(){
         console.log("loginn jsx waal er",error);
     }
 
-   
-    // fetch("http://localhost:8080/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // });
+  
   };
 
-    // let [form,setForm] = useState({
-    //     userName:"",password:""
-    // })
 
-    // let inputHandler = (e) => {
-    //     let currName = e.target.name;
-    //     let currVal = e.target.value;
-
-    //     setForm((currData) => {
-    //         currData[currName] = currVal;
-    //         return {...currData};
-    //     })
-
-    // }
 return (
   <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4">
-    {/* background glow */}
+   
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-green-400/5 rounded-full blur-3xl pointer-events-none" />
  
     <div className="relative z-10 w-full max-w-md">
-      {/* Card */}
+     
       <div className="bg-white/[0.03] border border-white/8 rounded-2xl p-8">
  
-        {/* Header */}
+      
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-black text-white tracking-tight font-['Sora',sans-serif]">
             Welcome back
@@ -118,7 +98,7 @@ return (
  
         <p className="text-center text-white/30 text-xs mt-6 font-['Sora',sans-serif]">
           Don't have an account?{" "}
-          <Link to="/auth/signup"><button className="text-green-400 hover:text-green-300 transition-colors">Sign up free</button></Link>
+          <Link to="/auth/signup" className="text-green-400 hover:text-green-300 transition-colors">Sign up free</Link>
         </p>
       </div>
     </div>

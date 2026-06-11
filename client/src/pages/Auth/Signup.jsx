@@ -87,7 +87,7 @@ return (
 
         <p className="text-center text-white/30 text-xs mt-6 font-['Sora',sans-serif]">
           Already have an account?{" "}
-           <Link to="/auth/login"><button className="text-green-400 hover:text-green-300 transition-colors">login here</button></Link>
+           <Link to="/auth/login" className="text-green-400 hover:text-green-300 transition-colors">login here</Link>
         </p>
       </div>
     </div>

@@ -68,7 +68,9 @@ export default function Customers(){
 
         <div className="flex flex-col gap-4 p-4">
 
-        if (!leads?.length)
+       
+  {!leads?.length && <p>No Leads Found</p>}
+
         
       {leads.map((lead) => (
 
@@ -100,7 +102,11 @@ export default function Customers(){
           </div>
 
           <div className="flex items-center justify-center text-2xl">
-            <i className="fa-solid fa-trash-can text-red-500" onClick={() => handleDeleteReq(lead.id)}></i>
+            <button type="button" aria-label="Delete lead"  className="cursor-pointer"
+  onClick={() => handleDeleteReq(lead.id)}>
+            <i className="fa-solid fa-trash-can text-red-500"></i>
+            </button>
+            
           </div>
 
           <div>
