@@ -166,8 +166,8 @@ let maxCount = 0;
 
 for (let key in interestCount){
   if(interestCount[key] > maxCount){
-    mostIntrested = interestCount[key];
-    maxCount = key;
+    mostIntrested = key;
+    maxCount = interestCount[key];
   }
 }
 

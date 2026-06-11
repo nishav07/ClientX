@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 export default function AddLeadsForm({onSubmit}){
     const {handleSubmit,register}  = useForm();
     return(<div id="AddLeads" className=" flex-1" >
+      
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex">
 

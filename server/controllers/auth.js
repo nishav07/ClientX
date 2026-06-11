@@ -58,9 +58,7 @@ async function login(req,res){
          res.json({ message: "loggedIn failed" ,success:false});
         console.log("login wala err from db",error)
     }
-
-
-    res.json({ message: "Login success",success:true })
+    
     
 }
 

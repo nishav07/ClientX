@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useLeads } from "../../features/leadContext";
 
 
-export default function AddLeads(){
+export default function EditLeads(){
     const { id } = useParams();
     let{ showToast } = useToast()
     let navigate = useNavigate();

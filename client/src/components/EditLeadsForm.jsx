@@ -22,7 +22,8 @@ export default function EditLeadsForm({onSubmit}){
 useEffect(() => {
     console.log("id from edit",id);
 
-    async function fetchLeads() {
+    try {
+      async function fetchLeads() {
         const {data} = await api.get(`/api/leads/${id}`);
         console.log(data.lead,"data from backend on signel lea dreq")
 
@@ -32,6 +33,9 @@ useEffect(() => {
     }
 
     fetchLeads();
+    } catch (error) {
+      console.log("error",error)
+    }
 },[id])
 
 

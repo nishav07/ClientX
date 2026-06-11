@@ -26,7 +26,7 @@ export const LeadProvider = ({ children }) => {
         console.log("src state",srcCount)
       } catch (err) {
         console.log("fetch context se err aata hua ",err);
-        setLeads(null);
+        setLeads([]);//kabhi bhi null mt dala kr use empty obj,arr
         setStatusCount(null)
       } finally {
         setLoading2(false);

@@ -67,7 +67,7 @@ export async function statusUpdate(req,res){
     try {
        const [rows] = await pool.query("UPDATE leads SET status = ? WHERE id = ? AND userId = ?",[status,leadId,userId,]);
        return res.json({updated:true});
-    } catch (error) {
+    } catch (err) {
         console.log(err)
         return res.json({updated:false});
     }
@@ -89,7 +89,7 @@ export async function filterData(req,res) {
         return acc;
     },{})
 
-     return res.json({data:user,leads:rows});
+     return res.json({data:req.user,leads:rows}); 
    } catch (error) {
     console.log(error)
     return res.json({msg:"data not found"});
@@ -119,7 +119,8 @@ export async function leadData(req,res){
         console.log("single lead from DB",leadId);
         return res.json({lead:rows[0]});
     } catch (err) {
-        return console.log("err",err)
+        return console.log("err from leadData",err);
+        return res.status(500).json({ msg: "Lead not found" })
     }
 }
 

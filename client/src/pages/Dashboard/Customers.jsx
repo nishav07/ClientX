@@ -9,17 +9,20 @@ export default function Customers(){
 
 
   const handleDeleteReq = async (leadId) => {
-    try{
-      let res = await api.delete(`/deleteLeads/${leadId}`);
-    console.log("delete ke baad ka res",res);
+    if(window.confirm("Are you sure you want to delete this lead?")){
+      try {
+        let res = await api.delete(`/deleteLeads/${leadId}`);
+        console.log("delete ke baad ka res",res);
 
-    if(res.data.deleted){
-      await fetchLeads();
-      showToast("lead deleted","success")
-    }
-    } catch (err){
-      console.log(err,"backend se")
-      showToast("lead not deleted","error")
+        if(res.data.deleted){
+          await fetchLeads();
+          showToast("lead deleted","success")
+        }
+
+      } catch (error) {
+        console.log("error",error)
+        showToast("lead not deleted","error")
+      }
     }
   }
 
@@ -58,11 +61,15 @@ export default function Customers(){
     if(loading2){
         return <h1>loding....</h1>
     }
+
+   
     return(<>
     <main id="customers">
 
         <div className="flex flex-col gap-4 p-4">
 
+        if (!leads?.length)
+        
       {leads.map((lead) => (
 
         <div

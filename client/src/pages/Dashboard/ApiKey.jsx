@@ -12,18 +12,23 @@ export default function ApiKey(){
 
 
 
+   try {
     let onSubmit = async(data) => {
-        console.log("data to submit",data);
-        const res = await api.post("/getApiKey",{data});
-        console.log("res from api",res)
+      console.log("data to submit",data);
+      const res = await api.post("/getApiKey",{data});
+      console.log("res from api",res)
 
-        if(res.data.apiData){
-            let raw = res.data.apiData.raw;
-            let prefix = res.data.apiData.prefix;
-            setApiKey(res.data.apiData);
-            fetchKeys();
-        }
-    }
+      if(res.data.apiData){
+          let raw = res.data.apiData.raw;
+          let prefix = res.data.apiData.prefix;
+          setApiKey(res.data.apiData);
+          fetchKeys();
+      }
+  }
+   } catch (error) {
+    showToast("error in api key","error");
+    console.log("error",error)
+   }
 
     let copyApi = () => {
          navigator.clipboard.writeText(apiKey.raw);
