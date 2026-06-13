@@ -11,13 +11,13 @@ export default function SideNav(){
         className="p-2 mt-16  flex flex-col gap-2"
         >
 
-            <Link to="/dashboard/home"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">home</button></Link>
-            <Link to="/dashboard/customers"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">customers</button></Link>
-            <Link to="/dashboard/leads"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">leads</button></Link>
-             <Link to="/dashboard/apiKeys"><button className="h-12 w-full p-2 bg-white text-black rounded-lg">API keys</button></Link>
+            <Link to="/dashboard/home" className="h-12 w-full p-2 bg-white text-black rounded-lg">home</Link>
+            <Link to="/dashboard/customers" className="h-12 w-full p-2 bg-white text-black rounded-lg">customers</Link>
+            <Link to="/dashboard/leads" className="h-12 w-full p-2 bg-white text-black rounded-lg">leads</Link>
+            <Link to="/dashboard/apiKeys" className="h-12 w-full p-2 bg-white text-black rounded-lg">API keys</Link>
 
 
-        </div>
+        </div> 
 
     </div>)
 }
