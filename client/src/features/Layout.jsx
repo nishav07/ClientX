@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SideNav from "../components/SideNav";
-import {Route,Routes,Link} from 'react-router-dom'; 
+import {Route,Routes} from 'react-router-dom'; 
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Customers from "../pages/Dashboard/Customers";
 import Leads from "../pages/Dashboard/Leads";

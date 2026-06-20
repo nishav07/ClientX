@@ -1,8 +1,6 @@
 import {Route,Routes} from 'react-router-dom';   
 import Login from '../pages/Auth/Login';
 import Signup from '../pages/Auth/Signup';
-import { Outlet } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { Navigate } from 'react-router-dom';
 

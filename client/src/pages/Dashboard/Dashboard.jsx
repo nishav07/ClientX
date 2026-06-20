@@ -1,7 +1,4 @@
 import { useLeads } from "../../features/leadContext"
-import api from "../../helperFx/api";
-import { useToast } from "../../features/ToastContext";
-import { useEffect,useState } from "react";
 import AnalyticsCard from "../../components/AnalyticsCard";
 
 export default function Dashboard(){
