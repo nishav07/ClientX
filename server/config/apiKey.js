@@ -6,10 +6,7 @@ export function generateApiKey() {
   
   const hash = crypto.createHash('sha256').update(raw).digest('hex');
   const prefix = raw.substring(0, 12); // "ak_live_a3f9"
-  
-  console.log("raw",raw)
-  console.log("hash",hash)
-  console.log("prefix",prefix)
+
   return { raw, hash, prefix };
 }
 

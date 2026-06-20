@@ -5,7 +5,6 @@ import { useEffect,useState } from "react";
 import AnalyticsCard from "../../components/AnalyticsCard";
 
 export default function Dashboard(){
-
      let { leads,loading2,statusCount,srcCount } = useLeads();
      
 

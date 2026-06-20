@@ -38,9 +38,7 @@ export const LeadProvider = ({ children }) => {
    fetchLeads();
   }, []);
 
-  useEffect(() => {
-  console.log("srcCount updated:", srcCount);
-}, [srcCount]);
+
 
   return (
     <LeadContext.Provider value={{fetchLeads, leads, setLeads, loading2 ,statusCount, setStatusCount,srcCount}}>

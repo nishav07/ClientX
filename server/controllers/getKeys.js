@@ -18,12 +18,10 @@ export async function getApiKey(req,res) {
     
      
 const data = generateApiKey();
-console.log("data from api",data)
 
 try {
     const [rows] = await pool.query("INSERT INTO apikeys (userId,keyHash,keyPrefix,apiName) VALUES(?,?,?,?)",[userId,data.hash,data.prefix,name]);
     insertId = rows.insertId
-    console.log("insert id",insertId);
 
     const insertedData = {
         id: rows.insertId,

@@ -2,10 +2,6 @@ import express from 'express';
 import "dotenv/config";
 import cors from "cors";
 
-
-
-
-
 import { pool, test } from "./config/sql.js";
 import { urlencoded } from "express";
 
@@ -14,7 +10,7 @@ const port = 8080;
 
 
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: process.env.CLIENT_URL || 'http://localhost:5173'
 }));
 
 
@@ -23,8 +19,10 @@ import router from './routes/routers.js';
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
 
+import { limiter } from './middlewares/rateLimit.js';
 
 app.use("/",router);
+app.use(limiter);
 
 test();
 

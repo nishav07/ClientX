@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../features/AuthContext";
 import { useToast } from "../../features/ToastContext";
 import { Link } from "react-router-dom";
+import api from "../../helperFx/api.js"; 
 
 
 
@@ -18,7 +19,7 @@ export default function Login(){
     console.log(data);
 
     try {
-        let res = await axios.post("http://localhost:8080/login",data);
+        let res = await axios.post("http://localhost:8080",data);
         console.log("response  ",res);
         console.log(res.data)
 

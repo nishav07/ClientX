@@ -12,9 +12,4 @@ async function verification(pass,passDB) {
 }
 
 
-const password = await hash("Nishav2015$$%");
-const check = await bcrypt.compare("Nishav2015$%",password)
-
-console.log(check);
-
 export {hash,verification};

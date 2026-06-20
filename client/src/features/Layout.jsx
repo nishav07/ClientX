@@ -2,7 +2,6 @@ import api from "../helperFx/api";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import SideNav from "../components/SideNav";
 import {Route,Routes,Link} from 'react-router-dom'; 
@@ -13,6 +12,8 @@ import { Navigate } from "react-router-dom";
 import AddLeads from "../pages/Dashboard/AddLeads";
 import EditLeads from "../pages/Dashboard/EditLeads";
 import ApiKey from "../pages/Dashboard/ApiKey";
+// import { useLeads } from "./leadContext";
+
 
 
 export default function Layout(){

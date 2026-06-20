@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 
 async function signup(req,res){
     let {userName,email,password} = req.body;
-    console.log("signup data from server",userName,email,password);
     let hashedPass = await hash(password);
     console.log(hashedPass);
     try {
@@ -21,8 +20,6 @@ async function signup(req,res){
 
 async function login(req,res){
     const {userName,password} = req.body;
-    console.log("backend ka data",userName,password);
-
     try {
         const [rows] = await pool.query("SELECT * FROM users WHERE userName = ?",userName);
 
@@ -49,7 +46,7 @@ async function login(req,res){
                                { expiresIn: '7d' }  
                             )
 
-            return res.json({ message: "login ho gya" ,success:true,userData:rows[0],token:token});
+            return res.json({ message: "login ho gya" ,success:true,userData: { userId: rows[0].userId, email: rows[0].email,userName: rows[0].userName},token:token});
         } else {
             return res.status(400).json({ message: "password galat hai" ,success:false});
         }
