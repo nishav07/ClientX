@@ -31,7 +31,6 @@ export async function dashboard(req,res){
   }
 })
 
-console.log("same src",sameSrc)
 
 
      return res.json({data:user,leads:rows,count:count,sameSrc:sameSrc});
@@ -66,6 +65,10 @@ export async function statusUpdate(req,res){
 
     try {
        const [rows] = await pool.query("UPDATE leads SET status = ? WHERE id = ? AND userId = ?",[status,leadId,userId,]);
+
+       if(rows.affectedRows === 0){
+         return res.status(404).jsos({message:"User not found",updated:false})
+       }
        return res.json({updated:true});
     } catch (err) {
         console.log(err)
@@ -102,6 +105,9 @@ export async function deleteLeads(req,res) {
 
     try {
        const [rows] = await pool.query("DELETE FROM leads WHERE userId = ? AND id = ?",[userId,leadId]);
+       if(rows.affectedRows === 0){
+         return res.status(404).jsos({msg:"User not found",deleted:false})
+       }
        return res.json({deleted:true});
     } catch (error) {
         console.log(error)

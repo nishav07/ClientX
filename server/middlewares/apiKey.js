@@ -3,6 +3,9 @@ import { getHash } from '../config/apiKey.js'
 
 export async function verifyApiKey(req,res,next) {
     let apiKey = req.headers['x-api-key'];
+
+    if (!apiKey) return res.status(401).json({ msg: 'API key required' });
+    
     let hash = getHash(apiKey);
 
     console.log("hash from user raw",hash)
