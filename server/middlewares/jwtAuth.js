@@ -8,10 +8,10 @@ export const verifyToken = async (req, res, next) => {
   console.log("yaaha tak sab chal rha hai")
   const authHeader = req.headers['authorization']
 
-  const token = authHeader && authHeader.split(' ')[1]
+  const token = req.cookie.token;
   
   if (!token) {
-    return res.status(401).json({ message: 'Token nahi mila, pehle login karo' })
+    return res.status(401).json({ message: 'Unautorized Token' })
   }
 
   try {
@@ -26,7 +26,7 @@ export const verifyToken = async (req, res, next) => {
       return res.status(401).json({message:"User not found"})
      }
 
-     console.log("yaaha tak bhi chala hai",decoded)
+  
     next()
     
   } catch (err) {

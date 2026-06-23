@@ -11,12 +11,7 @@ export const LeadProvider = ({ children }) => {
 
 
   const fetchLeads = async () => {
-      const token = localStorage.getItem('token');
 
-      if(!token){
-        setLoading2(false);
-        return
-      }
       try {
         const { data } = await api.get("/dashboard");
         console.log("data from back",data)

@@ -46,7 +46,14 @@ async function login(req,res){
                                { expiresIn: '7d' }  
                             )
 
-            return res.json({ message: "login ho gya" ,success:true,userData: { userId: rows[0].userId, email: rows[0].email,userName: rows[0].userName},token:token});
+                            res.cookie("token", token, {
+                                httpOnly: true,
+                                secure: false, 
+                                sameSite: "lax",
+                                maxAge: 7 * 24 * 60 * 60 * 1000
+                            });
+
+            return res.json({ message: "login ho gya" ,success:true,userData: { userId: rows[0].userId, email: rows[0].email,userName: rows[0].userName}});
         } else {
             return res.status(400).json({ message: "password galat hai" ,success:false});
         }
