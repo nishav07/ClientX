@@ -21,7 +21,7 @@ async function signup(req,res){
 async function login(req,res){
     const {userName,password} = req.body;
     try {
-        const [rows] = await pool.query("SELECT * FROM users WHERE userName = ?",userName);
+        const [rows] = await pool.query("SELECT * FROM users WHERE userName = ?",[userName]);
 
         if(rows.length === 0){
             return res.json({ message: "User not found" ,success:false});
@@ -52,6 +52,8 @@ async function login(req,res){
                                 sameSite: "lax",
                                 maxAge: 7 * 24 * 60 * 60 * 1000
                             });
+
+                            console.log("chk headers",res.getHeaders());
 
             return res.json({ message: "login ho gya" ,success:true,userData: { userId: rows[0].userId, email: rows[0].email,userName: rows[0].userName}});
         } else {

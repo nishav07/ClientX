@@ -8,7 +8,7 @@ export const verifyToken = async (req, res, next) => {
   console.log("yaaha tak sab chal rha hai")
   const authHeader = req.headers['authorization']
 
-  const token = req.cookie.token;
+  const token = req.cookies.token;
   
   if (!token) {
     return res.status(401).json({ message: 'Unautorized Token' })

@@ -25,17 +25,17 @@ export default function Signup(){
         console.log(error);
     }
     }
-   // ===== SIGNUP - sirf return part replace karo =====
+  
 
 return (
   <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4">
-    {/* background glow */}
+   
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-green-400/5 rounded-full blur-3xl pointer-events-none" />
 
     <div className="relative z-10 w-full max-w-md">
       <div className="bg-white/[0.03] border border-white/8 rounded-2xl p-8">
 
-        {/* Header */}
+     
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-black text-white tracking-tight font-['Sora',sans-serif]">
             Create account

@@ -19,7 +19,9 @@ export default function Login(){
     console.log(data);
 
     try {
-        let res = await axios.post("http://localhost:8080",data);
+        let res = await api.post("/login",data,{
+    withCredentials: true
+  });
         console.log("response  ",res);
         console.log(res.data)
 
@@ -30,8 +32,7 @@ export default function Login(){
         console.log("data login mai jo save ho rha",{userName,email,userId})
 
             setUser({userName:userName,email:email,userId:userId});
-            console.log("token save krte time",res.data.token)
-            localStorage.setItem("token",res.data.token)
+        
             showToast("Login Successful", "success");
             navigate("/dashboard");
         } else {
