@@ -1,4 +1,3 @@
-import './App.css';
 import Landing from './pages/Landing'
 import Auth from './features/Auth';
 import {Route,Routes} from 'react-router-dom';
@@ -10,7 +9,6 @@ import { ToastProvider } from './features/ToastContext.jsx';
 
 function App() {
   
-  // let [user,setUser] = useState(null);
 
   return (
     <>
@@ -18,9 +16,7 @@ function App() {
     <AuthProvider>
     <Routes>
     <Route path='/' element={<Landing/>} />
-    {/* //auth ke baad /* lagane se iske aage ka route uske control mai jaat hai */}
     <Route path='/auth/*' element={<Auth/>} /> 
-    {/* <Route path='/dashboard' element={user ? <Layout userData={user}/> : <Navigate to="/"/>}/> */}
       <Route
           path="/dashboard/*"
           element={

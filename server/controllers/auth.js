@@ -53,7 +53,7 @@ async function login(req,res){
                                 maxAge: 7 * 24 * 60 * 60 * 1000
                             });
 
-                            console.log("chk headers",res.getHeaders());
+                
 
             return res.json({ message: "login ho gya" ,success:true,userData: { userId: rows[0].userId, email: rows[0].email,userName: rows[0].userName}});
         } else {
